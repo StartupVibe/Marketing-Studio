@@ -14,27 +14,39 @@
 :root {
   --default-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Poppins", sans-serif;
-  --nav-font: "Inter", sans-serif; 
+  --nav-font: "Inter", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #000000; /* Background color for the entire website, including individual sections */
-  --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #f0f0f0; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #a8cc00; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #1a1a1a; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #000000;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #ffffff;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #f0f0f0;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #a8cc00;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #1a1a1a;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #f0f0f0;  /* The default color of the main navmenu links */
-  --nav-hover-color: #a8cc00; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #000000; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #f0f0f0; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #a8cc00; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #f0f0f0;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #a8cc00;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #000000;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1a1a1a;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #f0f0f0;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #a8cc00;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -613,60 +625,40 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Clients Section
+# Clients & partners Section
 --------------------------------------------------------------*/
-.clients {
-  padding: 60px 0;
+.slider-container {
+  width: 100%;
+  overflow: hidden;
 }
 
-.clients .swiper-slide {
-  text-align: center;
-  transition: transform 0.3s ease;
+.slider-track {
+  display: flex;
+  transition: none;
 }
 
-.clients .swiper-slide:hover {
-  transform: scale(1.05);
+.slide {
+  min-width: calc(100% / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.clients .swiper-slide img {
-  max-width: 100%;
+.slide img {
+  max-width: 50%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  display: block;
 }
 
-.clients .swiper-slide img:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
+@media (max-width:767px) {
+  .slide img {
+    max-width: 100%;
+  }
 
-/*--------------------------------------------------------------
-# Partners Section
---------------------------------------------------------------*/
-.partners {
-  padding: 60px 0;
-  background-color: var(--surface-color);
-}
+  .clients .slide img.wasl, .clients .slide img.cairo-tech {
+    max-width: 50%;
+  }
 
-.partners .swiper-slide {
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.partners .swiper-slide:hover {
-  transform: scale(1.05);
-}
-
-.partners .swiper-slide img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.partners .swiper-slide img:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /*--------------------------------------------------------------
@@ -1304,6 +1296,9 @@ section,
   height: auto;
   min-height: 80px;
   cursor: pointer;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
 }
 
 .features .nav-link::before {
@@ -3330,9 +3325,11 @@ section,
   border-radius: 8px;
   font-size: 1rem;
 }
-.form-label{
+
+.form-label {
   color: white;
 }
+
 .contact .contact-form .form-control:focus,
 .contact .contact-form .form-select:focus {
   border-color: color-mix(in srgb, var(--accent-color), transparent 50%);
@@ -3995,4 +3992,63 @@ section,
   .service-details .service-header .lead {
     font-size: 16px;
   }
+}
+
+
+/* الحالة المبدئية */
+*[data-anim] {
+  opacity: 0;
+  transition: opacity var(--fade-duration, 1s) ease,
+    transform var(--fade-duration, 1s) ease;
+}
+
+/* أنواع fade */
+[data-anim="fade-in"].visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-anim="fade-out"].visible {
+  opacity: 0;
+  transform: none;
+}
+
+/* fade-up */
+[data-anim="fade-up"] {
+  transform: translateY(30px);
+}
+
+[data-anim="fade-up"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* fade-down */
+[data-anim="fade-down"] {
+  transform: translateY(-30px);
+}
+
+[data-anim="fade-down"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* fade-left */
+[data-anim="fade-left"] {
+  transform: translateX(-30px);
+}
+
+[data-anim="fade-left"].visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* fade-right */
+[data-anim="fade-right"] {
+  transform: translateX(30px);
+}
+
+[data-anim="fade-right"].visible {
+  opacity: 1;
+  transform: translateX(0);
 }
